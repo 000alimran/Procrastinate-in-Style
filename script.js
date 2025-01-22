@@ -56,15 +56,14 @@ const activities = [
   // Event listener for the theme toggle button
   themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
+    if (document.body.classList.contains('dark-mode')) {
+      localStorage.setItem('dark-mode', 'enabled');
+    } else {
+      localStorage.setItem('dark-mode', 'disabled');
+    }
   });
   
   // Initialize dark mode if previously set
   if (localStorage.getItem('dark-mode') === 'enabled') {
     document.body.classList.add('dark-mode');
   }
-  
-  // Save dark mode preference
-  themeToggle.addEventListener('click', () => {
-    if (document.body.classList.contains('dark-mode')) {
-      localStorage.setItem('dark-mode', 'enabled');
-   
