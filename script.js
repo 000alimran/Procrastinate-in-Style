@@ -25,6 +25,11 @@ const activities = [
   // Get DOM elements
   const activityButton = document.getElementById('activityButton');
   const activityDisplay = document.getElementById('activityDisplay');
+  const historyList = document.getElementById('historyList');
+  const themeToggle = document.getElementById('themeToggle');
+  
+  // Activity history array
+  let activityHistory = [];
   
   // Function to get a random activity
   function getRandomActivity() {
@@ -32,8 +37,34 @@ const activities = [
     return activities[randomIndex];
   }
   
-  // Event listener for the button
+  // Function to update activity history
+  function updateHistory(activity) {
+    const listItem = document.createElement('li');
+    listItem.textContent = activity;
+    historyList.appendChild(listItem);
+  }
+  
+  // Event listener for the activity button
   activityButton.addEventListener('click', () => {
     const activity = getRandomActivity();
     activityDisplay.textContent = activity;
+    activityDisplay.classList.add('fade-in');
+    activityHistory.push(activity);
+    updateHistory(activity);
   });
+  
+  // Event listener for the theme toggle button
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
+  
+  // Initialize dark mode if previously set
+  if (localStorage.getItem('dark-mode') === 'enabled') {
+    document.body.classList.add('dark-mode');
+  }
+  
+  // Save dark mode preference
+  themeToggle.addEventListener('click', () => {
+    if (document.body.classList.contains('dark-mode')) {
+      localStorage.setItem('dark-mode', 'enabled');
+   
