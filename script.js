@@ -40,6 +40,7 @@ const activities = [
   // Function to update activity history
   function updateHistory(activity) {
     const listItem = document.createElement('li');
+    listItem.className = 'list-group-item';
     listItem.textContent = activity;
     historyList.appendChild(listItem);
   }
@@ -54,7 +55,7 @@ const activities = [
   });
   
   // Event listener for the theme toggle button
-  themeToggle.addEventListener('click', () => {
+  themeToggle.addEventListener('change', () => {
     document.body.classList.toggle('dark-mode');
     if (document.body.classList.contains('dark-mode')) {
       localStorage.setItem('dark-mode', 'enabled');
@@ -66,4 +67,5 @@ const activities = [
   // Initialize dark mode if previously set
   if (localStorage.getItem('dark-mode') === 'enabled') {
     document.body.classList.add('dark-mode');
+    themeToggle.checked = true;
   }
