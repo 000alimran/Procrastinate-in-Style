@@ -25,6 +25,7 @@ const activities = [
   // Get DOM elements
   const activityButton = document.getElementById('activityButton');
   const activityDisplay = document.getElementById('activityDisplay');
+  const timerDisplay = document.getElementById('timerDisplay');
   const historyList = document.getElementById('historyList');
   const themeToggle = document.getElementById('themeToggle');
   
@@ -35,6 +36,21 @@ const activities = [
   function getRandomActivity() {
     const randomIndex = Math.floor(Math.random() * activities.length);
     return activities[randomIndex];
+  }
+  
+  // Function to start a countdown timer
+  function startTimer(seconds, activity) {
+    let timer = seconds;
+    timerDisplay.textContent = `Time left: ${timer} seconds`;
+    timerDisplay.classList.add('fade-in');
+    const interval = setInterval(() => {
+      timer--;
+      timerDisplay.textContent = `Time left: ${timer} seconds`;
+      if (timer <= 0) {
+        clearInterval(interval);
+        timerDisplay.textContent = "Time's up! Great job!";
+      }
+    }, 1000);
   }
   
   // Function to update activity history
@@ -52,6 +68,14 @@ const activities = [
     activityDisplay.classList.add('fade-in');
     activityHistory.push(activity);
     updateHistory(activity);
+  
+    // Start a timer if the activity includes a time
+    if (activity.includes("seconds")) {
+      const time = parseInt(activity.match(/\d+/)[0]); // Extract time from activity
+      startTimer(time, activity);
+    } else {
+      timerDisplay.textContent = ""; // Clear timer display
+    }
   });
   
   // Event listener for the theme toggle button
