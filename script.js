@@ -105,4 +105,21 @@ const activities = [
       }
     }, 1000);
   }
+  function addTask() {
+    const taskInput = document.getElementById('task-input');
+    const isPriority = document.getElementById('task-priority').checked;
+    const taskText = taskInput.value.trim();
   
+    if (taskText) {
+      const taskItem = document.createElement('li');
+      taskItem.textContent = taskText;
+      taskItem.className = isPriority ? 'high-priority' : '';
+      document.getElementById('task-list').appendChild(taskItem);
+  
+      taskInput.value = ''; // Clear input
+      document.getElementById('task-priority').checked = false; // Reset checkbox
+    }
+  }
+  
+  document.getElementById('add-task').addEventListener('click', addTask);
+   

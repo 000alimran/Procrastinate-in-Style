@@ -84,3 +84,8 @@ body {
       padding: 1rem;
     }
   }
+  .high-priority {
+    color: red;
+    font-weight: bold;
+  }
+  
