@@ -93,3 +93,16 @@ const activities = [
     document.body.classList.add('dark-mode');
     themeToggle.checked = true;
   }
+  function startBreakTimer() {
+    let timer = 5 * 60; // 5 minutes in seconds
+    timerDisplay.textContent = `Break: ${Math.floor(timer / 60)}:${timer % 60}`;
+    const interval = setInterval(() => {
+      timer--;
+      timerDisplay.textContent = `Break: ${Math.floor(timer / 60)}:${timer % 60}`;
+      if (timer <= 0) {
+        clearInterval(interval);
+        alert("Break's over! Time to focus again!");
+      }
+    }, 1000);
+  }
+  
