@@ -1,45 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Procrastinate in Style</title>
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Poppins Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="light-mode">
-  <div class="container text-center py-5">
-    <!-- Dark Mode Toggle Button -->
-    <div class="form-check form-switch d-flex justify-content-end mb-4">
-      <input class="form-check-input" type="checkbox" id="themeToggle">
-      <label class="form-check-label" for="themeToggle">Dark Mode</label>
+<body>
+  <div class="container py-5">
+    <div class="d-flex justify-content-end mb-4">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="themeToggle">
+        <label class="form-check-label" for="themeToggle">Dark Mode</label>
+      </div>
     </div>
-    <div class="task-controls">
-      <input type="text" id="task-input" placeholder="Add a new task" />
-      <label>
-        <input type="checkbox" id="task-priority" />
-        High Priority
-      </label>
-      <button id="add-task">Add</button>
-    </div>
-    
-    <h1 class="display-4 mb-4">Procrastinate in Style</h1>
-    <p class="lead mb-4">Feeling stuck? Let's take a break with something fun!</p>
-    <button id="activityButton" class="btn btn-primary btn-lg mb-4">Give Me an Activity</button>
-    <div id="activityDisplay" class="fade-in fs-4 fw-bold text-primary mb-4"></div>
-    <div id="timerDisplay" class="fs-5 fw-bold text-secondary mb-4"></div>
-    <div id="history" class="mt-5">
-      <h2 class="h4 mb-3">Activity History</h2>
-      <ul id="historyList" class="list-group"></ul>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h1 class="display-4 text-center mb-4 fw-bold text-primary">Procrastinate in Style</h1>
+        <p class="lead text-center text-muted mb-5">Feeling stuck? Let's take a break with something fun!</p>
+
+        <div class="task-controls mb-5">
+          <div class="input-group mb-3 shadow">
+            <input type="text" id="task-input" class="form-control" placeholder="Add a new task">
+            <div class="input-group-text bg-white">
+              <input class="form-check-input mt-0 me-2" type="checkbox" id="task-priority">
+              <label class="form-check-label text-danger fw-bold">High Priority</label>
+            </div>
+            <button id="add-task" class="btn btn-success">Add</button>
+          </div>
+          <ul id="task-list" class="list-group shadow"></ul>
+        </div>
+
+        <div class="text-center mb-5">
+          <button id="activityButton" class="btn btn-primary btn-lg px-5 py-3 mb-4 shadow">
+            🎉 Get Random Activity
+          </button>
+          <div class="card shadow">
+            <div class="card-body">
+              <div id="activityDisplay" class="fs-3 mb-3"></div>
+              <div id="timerDisplay" class="fs-5 text-secondary"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="history-section mt-5">
+          <h2 class="h4 text-center text-muted mb-4">Activity History</h2>
+          <ul id="historyList" class="list-group shadow"></ul>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Bootstrap JS and Popper.js -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
